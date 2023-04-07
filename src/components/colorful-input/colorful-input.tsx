@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { createElement } from 'react';
 import { Input } from '@alifd/next';
-import { bizCssPrefix } from '../../variables';
 import './index.scss';
 
 export interface ColorfulInputProps {
   color?: 'string';
-  style?: 'object'
+  style?: 'object';
 }
 
 const ColorfulInput: React.FC<ColorfulInputProps> = function ColorfulInput({
@@ -20,9 +19,7 @@ const ColorfulInput: React.FC<ColorfulInputProps> = function ColorfulInput({
   }
   const _otherProps = otherProps || {};
   _otherProps.style = _style;
-  return (
-    <Input { ..._otherProps } />
-  );
+  return <Input {..._otherProps} />;
 };
 
 export default ColorfulInput;

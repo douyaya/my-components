@@ -21,11 +21,11 @@ const MyTableMeta: ComponentMetadata = {
         "title": {
           "label": {
             "type": "i18n",
-            "en-US": "color",
-            "zh-CN": "color"
+            "en-US": "rowKey",
+            "zh-CN": "rowKey"
           }
         },
-        "name": "color",
+        "name": "rowKey",
         "setter": {
           "componentName": "RadioGroupSetter",
           "props": {
@@ -42,6 +42,7 @@ const MyTableMeta: ComponentMetadata = {
               }
             ]
           },
+          "isRequired": true,
           "initialValue": "string"
         }
       },
@@ -49,32 +50,103 @@ const MyTableMeta: ComponentMetadata = {
         "title": {
           "label": {
             "type": "i18n",
-            "en-US": "style",
-            "zh-CN": "style"
+            "en-US": "columns",
+            "zh-CN": "columns"
           }
         },
-        "name": "style",
+        "name": "columns",
         "setter": {
-          "componentName": "RadioGroupSetter",
+          "componentName": "ArraySetter",
           "props": {
-            "dataSource": [
-              {
-                "label": "object",
-                "value": "object"
-              }
-            ],
-            "options": [
-              {
-                "label": "object",
-                "value": "object"
-              }
-            ]
+            "itemSetter": {
+              "componentName": "MixedSetter",
+              "isRequired": false,
+              "props": {}
+            }
           },
-          "initialValue": "object"
+          "initialValue": []
+        }
+      },
+      {
+        "title": {
+          "label": {
+            "type": "i18n",
+            "en-US": "request",
+            "zh-CN": "request"
+          }
+        },
+        "name": "request",
+        "setter": {
+          "componentName": "ObjectSetter",
+          "props": {
+            "config": {
+              "items": [
+                {
+                  "title": {
+                    "label": {
+                      "type": "i18n",
+                      "en-US": "api",
+                      "zh-CN": "api"
+                    }
+                  },
+                  "name": "api",
+                  "setter": {
+                    "componentName": "StringSetter",
+                    "isRequired": true,
+                    "initialValue": ""
+                  }
+                },
+                {
+                  "title": {
+                    "label": {
+                      "type": "i18n",
+                      "en-US": "method",
+                      "zh-CN": "method"
+                    }
+                  },
+                  "name": "method",
+                  "setter": {
+                    "componentName": "MixedSetter",
+                    "isRequired": true,
+                    "props": {}
+                  }
+                }
+              ],
+              "extraSetter": {
+                "componentName": "MixedSetter",
+                "isRequired": false,
+                "props": {}
+              }
+            }
+          },
+          "isRequired": true
+        }
+      },
+      {
+        "title": {
+          "label": {
+            "type": "i18n",
+            "en-US": "dataSource",
+            "zh-CN": "dataSource"
+          }
+        },
+        "name": "dataSource",
+        "setter": {
+          "componentName": "ArraySetter",
+          "props": {
+            "itemSetter": {
+              "componentName": "MixedSetter",
+              "isRequired": false,
+              "props": {}
+            }
+          },
+          "initialValue": []
         }
       }
     ],
-    "supports": {},
+    "supports": {
+      "style": true
+    },
     "component": {}
   }
 };
