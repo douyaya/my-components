@@ -9,7 +9,15 @@ module.exports = {
       '@alifd/build-plugin-lowcode',
       {
         library,
-        engineScope: "@alilc"
+        engineScope: '@alilc',
+        extraAssets: [
+          {
+            package: 'antd',
+            version: '5.4.0',
+            urls: ['https://unpkg.com/antd@5.4.0/dist/antd.min.js'],
+            library: 'antd',
+          },
+        ],
       },
     ],
   ],

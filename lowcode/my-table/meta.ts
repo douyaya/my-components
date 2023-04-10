@@ -8,8 +8,8 @@ const MyTableMeta: ComponentMetadata = {
   "screenshot": "",
   "devMode": "proCode",
   "npm": {
-    "package": "my-components",
-    "version": "0.1.0",
+    "package": "my-components-new",
+    "version": "0.1.2",
     "exportName": "MyTable",
     "main": "src/index.tsx",
     "destructuring": true,

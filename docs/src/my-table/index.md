@@ -6,7 +6,7 @@
 
 ```tsx
 import React from 'react';
-import { MyTable } from 'my-components';
+import { MyTable } from 'my-components-new';
 
 const columns: any[] = [
   {

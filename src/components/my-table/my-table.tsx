@@ -30,9 +30,6 @@ const MyTable: React.FC<MyTableProps> = function MyTableFunc({
   dataSource,
   style,
 }) {
-  if (!request && !dataSource) {
-    throw new Error('error: 必须配置request或者dataSource');
-  }
   const { api, method } = request || {};
 
   return (

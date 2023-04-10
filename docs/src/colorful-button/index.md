@@ -6,13 +6,14 @@
 
 ```tsx
 import React from 'react';
-import { ColorfulButton } from 'my-components';
-
+import { ColorfulButton } from 'my-components-new';
 
 export default () => {
-  return <div>
-    <ColorfulButton color="red"/>
-  </div>
+  return (
+    <div>
+      <ColorfulButton color="red" />
+    </div>
+  );
 };
 ```
 
