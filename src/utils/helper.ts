@@ -6,8 +6,8 @@
 // }) {
 //   return await post<Response<ResultList<any>>>(`${prefix}/ops/confighub/router/add`, params);
 // }
-import * as resInterface from './reuest';
-
+import { get, post, del, put, patch } from './reuest';
+const requestInstance = { get, post, del, put, patch };
 export interface Response<T> {
   data: T;
   success: boolean;
@@ -19,15 +19,10 @@ export interface ResultList<T> {
 }
 export type ReqMethod = 'get' | 'del' | 'post' | 'put' | 'patch';
 
-export function requestFormat(api: string, method: ReqMethod) {
+export function requestFormat(api: string, method: ReqMethod = 'get') {
   // todo 判断下是不是对象
   return async function (params: any) {
-    const queryString = objectToQueryString(params);
-    const apiString = method === 'post' ? api : `${api}?${queryString}`;
-    return await resInterface[method]<Response<ResultList<any>>>(
-      apiString,
-      method === 'post' ? params : {},
-    );
+    return requestInstance[method]<Response<ResultList<any>>>(api, params);
   };
 }
 

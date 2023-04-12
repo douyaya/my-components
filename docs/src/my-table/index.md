@@ -11,7 +11,7 @@ import { MyTable } from 'my-components-new';
 const columns: any[] = [
   {
     title: '名称',
-    dataIndex: 'appName',
+    dataIndex: 'id',
     tip: '名称是唯一的 key',
     formItemProps: {
       rules: [
@@ -23,16 +23,8 @@ const columns: any[] = [
     },
   },
   {
-    title: '升级类型',
-    dataIndex: 'upgradeType',
-    valueEnum: {
-      0: { text: '升级', status: 'MALE' },
-      1: { text: '单机升级', status: 'FEMALE' },
-    },
-  },
-  {
-    title: '更新时间',
-    dataIndex: 'updatedAt',
+    title: '内容',
+    dataIndex: 'title',
     valueType: 'text',
   },
   {
@@ -42,8 +34,8 @@ const columns: any[] = [
   },
 ];
 const requestConfig = {
-  api: 'https://httpizza.daily.elenet.me/ele-me-ele-arch-soa-jath/api/appUpgradePlan/detailList',
-  method: 'post',
+  api: 'https://proapi.azurewebsites.net/github/issues',
+  method: 'get',
   // todo 组件还没接收
   params: ['id', 'gender'], // 不配置默认全传,一个都不想传就写[]
   extraParams: { extra: true },
@@ -60,7 +52,7 @@ const dataSource = [
 export default () => {
   return (
     <div>
-      <MyTable rowKey="id" dataSource={dataSource} columns={columns} />
+      <MyTable rowKey="id" request={requestConfig} dataSource={dataSource} columns={columns} />
     </div>
   );
 };

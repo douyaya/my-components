@@ -78,6 +78,7 @@ demos/
 !scripts/demos/
 /platform
 build/
+lowcode/
 test/coverage/
 test/**/coverage/
 mochawesome-report/

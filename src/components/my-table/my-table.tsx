@@ -1,19 +1,14 @@
 // import * as React from 'react';
-// import { createElement } from 'react';
-import { ProTable } from '@ant-design/pro-components';
-
-// import { Table } from 'antd';
-
-import * as React from 'react';
 import { createElement } from 'react';
+import { ProTable } from '@ant-design/pro-components';
+import request from 'umi-request';
+import * as React from 'react';
 
 import { requestFormat } from '../../utils/helper';
-// import type { ReqMethod } from '../../utils/helper';
-import './index.scss';
+import type { ReqMethod } from '../../utils/helper';
 interface RequestConfig {
   api: string;
-  // method: ReqMethod;
-  method: any;
+  method: ReqMethod;
 }
 export interface MyTableProps {
   rowKey: 'string';
@@ -22,16 +17,41 @@ export interface MyTableProps {
   request: RequestConfig;
   dataSource?: any[];
 }
+// const DEFAULT_COLUMN = [
+//   {
+//     title: '名称',
+//     dataIndex: 'id',
+//     tip: '名称是唯一的 key',
+//     formItemProps: {
+//       rules: [
+//         {
+//           required: true,
+//           message: '名称为必填项',
+//         },
+//       ],
+//     },
+//   },
+//   {
+//     title: '内容',
+//     dataIndex: 'title',
+//     valueType: 'text',
+//   },
+//   {
+//     title: '操作',
+//     dataIndex: 'option',
+//     valueType: 'option',
+//   },
+// ];
 
 const MyTable: React.FC<MyTableProps> = function MyTableFunc({
   rowKey,
   columns,
-  request,
+  request: requestConfig,
   dataSource,
   style,
 }) {
-  const { api, method } = request || {};
-
+  const { api, method } = requestConfig || {};
+  const isRequest = !!api;
   return (
     <ProTable
       style={style}
@@ -39,13 +59,7 @@ const MyTable: React.FC<MyTableProps> = function MyTableFunc({
       request={
         !request
           ? undefined
-          : async (
-              // 第一个参数 params 查询表单和 params 参数的结合
-              // 第一个参数中一定会有 pageSize 和  current ，这两个参数是 antd 的规范
-              params,
-              sort,
-              filter,
-            ) => {
+          : async (params, sort, filter) => {
               const requestFunc = requestFormat(api, method);
               const reqData = Object.assign(sort, filter, params, {
                 page: params.current,
@@ -54,14 +68,13 @@ const MyTable: React.FC<MyTableProps> = function MyTableFunc({
               const res = await requestFunc(reqData);
               // todo 加个数据处理方法
               return {
-                data: (res?.data as any)?.dataList || [],
+                data: (res?.data as any) || [],
                 success: true,
-                // 不传会使用 data 的长度，如果是分页一定要传
-                total: (res?.data as any)?.count,
+                total: (res?.data as any)?.total,
               };
             }
       }
-      {...(dataSource ? { dataSource } : {})}
+      {...(isRequest ? {} : { dataSource })}
       columns={columns}
     />
   );

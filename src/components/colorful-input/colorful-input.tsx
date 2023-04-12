@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createElement } from 'react';
-import { Input } from '@alifd/next';
+import { Input } from 'antd';
 import './index.scss';
 
 export interface ColorfulInputProps {

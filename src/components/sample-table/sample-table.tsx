@@ -1,4 +1,4 @@
-import { Table } from '@alifd/next';
+import { Table } from 'antd';
 
 import * as React from 'react';
 import { createElement } from 'react';

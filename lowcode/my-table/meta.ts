@@ -106,9 +106,55 @@ const MyTableMeta: ComponentMetadata = {
                   },
                   "name": "method",
                   "setter": {
-                    "componentName": "MixedSetter",
+                    "componentName": "SelectSetter",
+                    "props": {
+                      "dataSource": [
+                        {
+                          "label": "get",
+                          "value": "get"
+                        },
+                        {
+                          "label": "del",
+                          "value": "del"
+                        },
+                        {
+                          "label": "post",
+                          "value": "post"
+                        },
+                        {
+                          "label": "put",
+                          "value": "put"
+                        },
+                        {
+                          "label": "patch",
+                          "value": "patch"
+                        }
+                      ],
+                      "options": [
+                        {
+                          "label": "get",
+                          "value": "get"
+                        },
+                        {
+                          "label": "del",
+                          "value": "del"
+                        },
+                        {
+                          "label": "post",
+                          "value": "post"
+                        },
+                        {
+                          "label": "put",
+                          "value": "put"
+                        },
+                        {
+                          "label": "patch",
+                          "value": "patch"
+                        }
+                      ]
+                    },
                     "isRequired": true,
-                    "props": {}
+                    "initialValue": "get"
                   }
                 }
               ],
